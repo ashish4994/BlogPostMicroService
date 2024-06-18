@@ -3,19 +3,19 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"github.com/rs/cors"
 )
 
 func main() {
 
 	// Load environment variables from .env file
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatal("Error loading .env file")
+	// }
 
 	connectDB()
 	defer db.Close()
@@ -40,6 +40,13 @@ func main() {
 
 	handler := c.Handler(r)
 
-	log.Println("Starting server on :8080")
-	log.Fatal(http.ListenAndServe(":8080", handler))
+	// Get the port number from the environment variable
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port if not specified
+	}
+
+	log.Printf("Starting server on :%s", port)
+	log.Fatal(http.ListenAndServe(":"+port, handler))
+
 }

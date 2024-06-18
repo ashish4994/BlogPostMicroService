@@ -1,0 +1,13 @@
+# Ignore the .vscode directory
+.vscode/
+
+# Ignore debug binaries
+_debug_bin/
+
+# Ignore all files with the .exe extension
+*.exe
+
+# You can also ignore other common files that should not be included:
+.DS_Store
+*.log
+tmp/
