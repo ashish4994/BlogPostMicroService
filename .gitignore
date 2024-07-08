@@ -64,8 +64,8 @@ _test
 # $GOPATH/pkg/
 
 # Go Module files
-go.sum
-go.mod
+# go.sum
+# go.mod
 
 # Local .env files
 .env
